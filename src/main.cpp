@@ -5,7 +5,10 @@
 using namespace std;
 
 int main() {
-    Buffer buffer(Politicas::FIFO);
+    // Buffer buffer(Politicas::FIFO);
+    Buffer buffer(Politicas::LRU);
+    // Buffer buffer(Politicas::MRU);
+    // Buffer buffer(Politicas::CLOCK);
 
     pages p1;
     p1.page = 2;
@@ -25,6 +28,15 @@ int main() {
     buffer.Fetch(5);
     buffer.Fetch(6);
     buffer.Fetch(7);
+    buffer.mostrar();
+    buffer.Fetch(3);
+    buffer.Fetch(3);
+    buffer.Fetch(3);
+    buffer.Fetch(5);
+    buffer.Fetch(6);
+    buffer.Fetch(7);
+    buffer.Fetch(4);
+    buffer.Fetch(10);
     buffer.mostrar();
     buffer.DisplayStats();
     return 0;

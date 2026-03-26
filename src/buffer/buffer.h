@@ -28,7 +28,7 @@ class Buffer {
         bool inserir(pages p);
         void Evict();
         int FIFO();
-        // int LRU();
+        int LRU();
         // int CLOCK();
         // int MRU();     
         // string DisplayCache();   
