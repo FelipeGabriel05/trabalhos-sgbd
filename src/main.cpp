@@ -49,7 +49,7 @@ int main() {
     buffer->Fetch(6);
 
     buffer->Fetch(7);
-    buffer->mostrar();
+    buffer->DisplayCache();
     
     buffer->Fetch(4);
     buffer->Fetch(4);
@@ -59,7 +59,7 @@ int main() {
     buffer->Fetch(7);
     buffer->Fetch(4);
     buffer->Fetch(10);
-    buffer->mostrar();
+    buffer->DisplayCache();
     buffer->DisplayStats();
     delete buffer;
     return 0;

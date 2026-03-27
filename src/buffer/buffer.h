@@ -13,7 +13,6 @@ class Buffer {
             politicaAtual = p;
         }
 
-        void mostrar();
         void DisplayStats();
         void DisplayCache(); 
         string Fetch(int key);

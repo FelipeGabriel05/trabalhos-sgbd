@@ -37,12 +37,12 @@ pages* Buffer::buscar(int key) {
 }
 
 // Mostra todas as paginas do meu buffer.
-void Buffer::mostrar() {
+void Buffer::DisplayCache() {
     cout << "\n--- BUFFER ---\n";
     for (auto &p : paginas) {
-        cout << "Page: " << p.page 
-             << " | Conteudo: " << p.conteudo 
-             << " | Dirty: " << p.dirty_bit 
+        cout << "Chave: " << p.page 
+             << " | Valor: " << p.conteudo 
+             << " | Atualizacao: " << (p.dirty_bit ? "true" : "false")
              << endl;
     }
 }
