@@ -1,7 +1,6 @@
 #include "../leitura/read.h"
 #include "../structs/pages.h"
 #include <vector>
-#include <random>
 using namespace std;
 
 
@@ -16,10 +15,13 @@ class Buffer {
 
         void mostrar();
         void DisplayStats();
+        void DisplayCache(); 
         string Fetch(int key);
 
     private:
         Politicas politicaAtual;
+        int contador_global = 0;
+        size_t ponteiro_clock = 0;
         int cache_hit = 0;
         int cache_miss = 0;
         vector<pages> paginas;
@@ -29,7 +31,6 @@ class Buffer {
         void Evict();
         int FIFO();
         int LRU();
-        // int CLOCK();
-        // int MRU();     
-        // string DisplayCache();   
+        int MRU();
+        int CLOCK();       
 };
