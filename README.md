@@ -1,6 +1,6 @@
 ## Trabalho 01 SGBD - Gerenciador de Buffer 
 
-Alunos: FELIPE GABRIEL LIMA FLORINDO - 569760 e YASMIN SANTOS DE AMORIM - 566326  
+Alunos: FELIPE GABRIEL e YASMIN SANTOS 
 
 ## Descrição do Projeto
 
