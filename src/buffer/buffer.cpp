@@ -11,6 +11,7 @@ std::uniform_int_distribution<> distr(0 , 1);
 // Inserir pagina no buffer
 bool Buffer::inserir(pages p) {
     if(paginas.size() < (size_t)capacidade) {
+        p.referencia = distr(gen);
         paginas.push_back(p);
         cout << "Pagina: " << p.page <<". Inserido com sucesso" << endl;
         return true;
@@ -101,7 +102,7 @@ void Buffer::Evict() {
 
     if(removida.dirty_bit) {
         cout << "pagina removida = " << removida.page;
-        cout << "W ";
+        cout << " W " << endl;
     }
 
     paginas.erase(paginas.begin() + indice);
@@ -153,10 +154,13 @@ int Buffer::MRU() {
 
 int Buffer::CLOCK() {
     if(paginas.empty()) return -1;
+    cout << "processo do CLOCK" << endl;
     while(true) {
+        cout << "Pagina: " << paginas[ponteiro_clock].page << endl << "Referencia: " << paginas[ponteiro_clock].referencia << endl;
         if(paginas[ponteiro_clock].referencia == false) {
             int indice = ponteiro_clock;
             ponteiro_clock = (ponteiro_clock + 1) % paginas.size();
+            cout << "indice escolhido para remocao = " << indice << endl;
             return indice;
         } else {
             paginas[ponteiro_clock].referencia = false;
