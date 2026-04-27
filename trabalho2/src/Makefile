@@ -24,6 +24,6 @@ $(TARGET): $(OBJS)
 %.o: %.cpp
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-# Apaga os buckets de texto gerados no teste
+# Apaga os buckets de texto gerados no teste 
 clean:
 	rm -f $(OBJS) $(TARGET) bucket_*.txt diretorio.txt
