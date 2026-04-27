@@ -16,7 +16,7 @@ ExtensibleHash::ExtensibleHash(int pg_inicial) {
     // Cria o primeiro bucket no disco
     Bucket bucket_inicial;
     bucket_inicial.id = proximo_id_bucket++;
-    bucket_inicial.PL = 0; //Inicia com Profundidade Local 0
+    bucket_inicial.PL = pg_inicial; 
     salvarBucketNoDisco(bucket_inicial);
 
     // Inicialmente, todos os ponteiros do diretório apontam para o único bucket existente
@@ -97,8 +97,8 @@ void ExtensibleHash::Buscar(int chave, ofstream& arquivo_out) {
         }
     }
     
-    // Grava no log out.txt no formato BUS:x/qtd
-    arquivo_out << "BUS:" << chave << "/" << qtd_encontradas << "\n";
+    // Grava no log out.txt 
+    arquivo_out << "BUS=:" << chave << "/" << qtd_encontradas << "\n";
 }
 
 
@@ -137,7 +137,7 @@ void ExtensibleHash::Inserir(int chave, ofstream& arquivo_out) {
    
     // Se o bucket estiver cheio (5 elementos), precisamos fazer o Split
     // Usamos while para garantir que continuaremos dividindo, se após uma divisão todas 
-    // as chaves  ainda possuírem o mesmo bit de hash, o bucket 
+    // as chaves ainda possuírem o mesmo bit de hash, o bucket 
     // continuará cheio e precisará ser dividido novamente em um nível mais profundo
     while (b.chaves.size() >= 5) {
         
@@ -153,7 +153,7 @@ void ExtensibleHash::Inserir(int chave, ofstream& arquivo_out) {
         }
         
         // Realiza a divisão do bucket que estourou a capacidade
-        realizarSplit(b.id, arquivo_out);
+        realizarSplit(b.id);
         
         // Como a estrutura mudou,recalculamos para qual gaveta esta chave específica deve ir agora
         indice_hash = calcularHash(chave, PG);
@@ -161,7 +161,7 @@ void ExtensibleHash::Inserir(int chave, ofstream& arquivo_out) {
         b = lerBucketDoDisco(bucket_id);
     }
 
-    // quando saímos do laço, temos certeza matemática de que há espaço no bucket b
+    // quando saímos do laço, temos certeza de que há espaço no bucket b
     b.chaves.push_back(chave);
     
     // mantém as chaves ordenadas dentro do bucket
@@ -172,7 +172,7 @@ void ExtensibleHash::Inserir(int chave, ofstream& arquivo_out) {
 }
 
 // split
-void ExtensibleHash::realizarSplit(int bucket_id, ofstream& arquivo_out) {
+void ExtensibleHash::realizarSplit(int bucket_id) {
     Bucket bucket_antigo = lerBucketDoDisco(bucket_id);
     
     // Cria um bucket novo
@@ -199,7 +199,7 @@ void ExtensibleHash::realizarSplit(int bucket_id, ofstream& arquivo_out) {
     }
     bucket_antigo.chaves = chaves_remanescentes;
     
-    // Ordena os dois buckets após a confusão da mudança
+    // Ordena os dois buckets 
     sort(bucket_antigo.chaves.begin(), bucket_antigo.chaves.end());
     sort(bucket_novo.chaves.begin(), bucket_novo.chaves.end());
     
