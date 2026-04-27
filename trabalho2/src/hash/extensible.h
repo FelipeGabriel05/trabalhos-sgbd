@@ -21,12 +21,12 @@ private:
     void salvarDiretorioNoDisco(); // cria o diretorio.txt para garantir persistência total
     
     int calcularHash(int chave, int profundidade);
-    void realizarSplit(int bucket_id, ofstream& arquivo_out);
+    void realizarSplit(int bucket_id);
 
 public:
     ExtensibleHash(int pg_inicial);
     
-    // Operações principais exigidas pelo trabalho
+    // operações principais 
     void Inserir(int chave, ofstream& arquivo_out);
     void Remover(int chave, ofstream& arquivo_out);
     void Buscar(int chave, ofstream& arquivo_out);
