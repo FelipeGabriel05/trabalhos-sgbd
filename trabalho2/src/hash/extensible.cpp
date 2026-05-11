@@ -16,7 +16,7 @@ ExtensibleHash::ExtensibleHash(int pg_inicial) {
     // Cria o primeiro bucket no disco
     Bucket bucket_inicial;
     bucket_inicial.id = proximo_id_bucket++;
-    bucket_inicial.PL = pg_inicial; 
+    bucket_inicial.PL = 0; 
     salvarBucketNoDisco(bucket_inicial);
 
     // Inicialmente, todos os ponteiros do diretório apontam para o único bucket existente
@@ -155,7 +155,7 @@ void ExtensibleHash::Inserir(int chave, ofstream& arquivo_out) {
         // Realiza a divisão do bucket que estourou a capacidade
         realizarSplit(b.id);
         
-        // Como a estrutura mudou,recalculamos para qual gaveta esta chave específica deve ir agora
+        // Como a estrutura mudou,recalculamos para qual buvkrt esta chave específica deve ir agora
         indice_hash = calcularHash(chave, PG);
         bucket_id = diretorio[indice_hash];
         b = lerBucketDoDisco(bucket_id);
@@ -190,7 +190,7 @@ void ExtensibleHash::realizarSplit(int bucket_id) {
     // Redistribuição das chaves antigas
     for (const int& k : bucket_antigo.chaves) {
         // Usa shift bitwise >> para olhar especificamente para o novo bit
-        // Se o bit for 1, a chave se muda para a casa nova. Se for 0, fica na antiga
+        // Se o bit for 1, a chave se muda para o novo bucket . Se for 0, fica na antiga
         if ((k >> bit_verificacao) & 1) {
             bucket_novo.chaves.push_back(k); 
         } else {
@@ -203,10 +203,6 @@ void ExtensibleHash::realizarSplit(int bucket_id) {
     sort(bucket_antigo.chaves.begin(), bucket_antigo.chaves.end());
     sort(bucket_novo.chaves.begin(), bucket_novo.chaves.end());
     
-    // Salva ambos no disco para liberar a RAM
-    salvarBucketNoDisco(bucket_antigo);
-    salvarBucketNoDisco(bucket_novo);
-    
     // atualiza os ponteiros do diretório que antes apontavam para o bucket antigo
     // os índices que tiverem o bit de verificação igual a 1 passam a apontar para o novo bucket
     for (size_t i = 0; i < diretorio.size(); i++) {
@@ -217,6 +213,9 @@ void ExtensibleHash::realizarSplit(int bucket_id) {
         }
     }
     
+    // Salva ambos no disco para liberar a RAM
+    salvarBucketNoDisco(bucket_antigo);
+    salvarBucketNoDisco(bucket_novo);
     // como o diretório mudou de configuração, reescrevemos seu backup no disco
     salvarDiretorioNoDisco(); 
 }
