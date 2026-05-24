@@ -17,10 +17,18 @@ class Buffer {
         bool cheio();
         int qtdFrames();
         void gerarRuns(Tabela &tabela, DiscoSimulado &disco, int indice_coluna);
-        void mergeRuns(DiscoSimulado &disco);
+        void mergeRuns(DiscoSimulado &disco, int indice_coluna);
         void mostrarBuffer();
         int FIFO();    
         void Evict();
+};
+
+struct EstadoRun {
+    int inicio;
+    int fim;
+    int paginaAtual;
+    int tuplaAtual;
+    bool ativa = true;
 };
 
 #endif
