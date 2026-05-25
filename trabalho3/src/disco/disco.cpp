@@ -53,8 +53,6 @@ void DiscoSimulado::mostrarRuns(int indice_coluna) {
     cout << "\n===================================\n";
 }
 
-// CORRIGIDO: exporta apenas as páginas da run final (runs[0])
-// antes exportava TODAS as páginas do disco, incluindo runs intermediárias
 void DiscoSimulado::exportarCSV(string caminho, int indice_coluna) {
 
     ofstream arquivo(caminho);
@@ -70,7 +68,7 @@ void DiscoSimulado::exportarCSV(string caminho, int indice_coluna) {
         return;
     }
 
-    // Percorre APENAS as páginas da run final (única run que sobrou após o merge)
+    // Percorre Apenas as páginas da run final (única run que sobrou após o merge)
     // runs[0].first = índice da primeira página da run final no disco
     // runs[0].second = índice da última página da run final no disco
     int inicio = runs[0].first;
@@ -92,7 +90,7 @@ void DiscoSimulado::exportarCSV(string caminho, int indice_coluna) {
     cout << "CSV exportado: " << caminho << endl;
 }
 
-// CORRIGIDO: salva runs TXT usando qtd_tuplas_ocup em vez de tuplas.size()
+// Salva runs TXT usando qtd_tuplas_ocup em vez de tuplas.size()
 void DiscoSimulado::salvarRunsTXT(string caminho, int indice_coluna) {
 
     ofstream arquivo(caminho);
@@ -118,7 +116,7 @@ void DiscoSimulado::salvarRunsTXT(string caminho, int indice_coluna) {
 
             arquivo << "\nPAGINA " << i << "\n";
 
-            // CORRIGIDO: usa qtd_tuplas_ocup para não ler posições vazias
+            // Usa qtd_tuplas_ocup para não ler posições vazias
             for(int j = 0; j < paginas[i].qtd_tuplas_ocup; j++) {
                 arquivo << paginas[i].tuplas[j].colunas[indice_coluna] << "\n";
             }

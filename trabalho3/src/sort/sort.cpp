@@ -31,11 +31,7 @@ void merge(
 
     while(i < n1 && j < n2) {
 
-        if(
-            L[i].colunas[indice_coluna]
-            <=
-            R[j].colunas[indice_coluna]
-        ) {
+        if(L[i].colunas[indice_coluna] <= R[j].colunas[indice_coluna]) {
 
             tuplas[k] = L[i];
 

@@ -12,12 +12,10 @@ int main() {
 
     cout << "\nTabelas carregadas com sucesso\n";
 
-    // ─────────────────────────────────────────
     // INDICES DAS COLUNAS DE JUNCAO
     int indiceGrapes = grapes.esquema.nome_para_indice["chave_primaria"];
     int indiceWines  = wines.esquema.nome_para_indice["chave_estrangeira"];
 
-    // ─────────────────────────────────────────
     // ORDENA TABELA GRAPES
     Buffer bufferGrapes;
     DiscoSimulado discoGrapes;
@@ -32,7 +30,6 @@ int main() {
 
     discoGrapes.exportarCSV("saida/grapes_ordenada.csv", indiceGrapes);
 
-    // ─────────────────────────────────────────
     // ORDENA TABELA WINES
     Buffer bufferWines;
     DiscoSimulado discoWines;
@@ -46,12 +43,6 @@ int main() {
     discoWines.mostrarRuns(indiceWines);
 
     discoWines.exportarCSV("saida/wines_ordenada.csv", indiceWines);
-
-    // ─────────────────────────────────────────
-    // CORRIGIDO: monta as tabelas ordenadas usando APENAS as páginas
-    // da run final (runs[0].first até runs[0].second).
-    // Antes usava disco.paginas inteiro, que inclui todas as runs
-    // intermediárias — causando desordem e duplicatas no join.
 
     Tabela grapesOrdenada;
     grapesOrdenada.esquema = grapes.esquema;
@@ -75,13 +66,11 @@ int main() {
         winesOrdenada.qtd_paginas = winesOrdenada.paginas.size();
     }
 
-    // ─────────────────────────────────────────
     // EXECUTA MERGE JOIN
     MergeJoin join;
 
     Tabela resultado = join.executar(winesOrdenada, grapesOrdenada, indiceWines, indiceGrapes);
 
-    // ─────────────────────────────────────────
     // SALVA E MOSTRA RESULTADO JOIN
     join.salvarResultadoCSV(resultado, "saida/resultado_join.csv");
 

@@ -43,7 +43,6 @@ Tabela carregarCSV(string caminho) {
     while(getline(arquivo, linha)) {
         if(linha.empty()) continue;
 
-        // remove \r do final da linha (CRLF do Windows)
         removerCR(linha);
 
         stringstream ss(linha);

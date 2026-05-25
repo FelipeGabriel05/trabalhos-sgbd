@@ -19,7 +19,6 @@ class Pagina {
         vector<Tupla> tuplas;
         int qtd_tuplas_ocup = 0;
 
-        // Obs: a quantidade de tuplas permitas para cada página são 12.
         bool cheia() {
             if(qtd_tuplas_ocup == 12) {
                 return true;
