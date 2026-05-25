@@ -5,10 +5,13 @@
 
 using namespace std;
 
-// ifstream => Usado para abrir arquivos
-// sstream => separa colunas da linha.
+static void removerCR(string &s) {
+    if(!s.empty() && s.back() == '\r') {
+        s.pop_back();
+    }
+}
 
-// função que carrega a tabela. Modificações feitas em relação aos últimos trabalhos.
+// Função que carrega a tabela a partir de um CSV com colunas separadas por TAB
 Tabela carregarCSV(string caminho) {
     Tabela tabela;
 
@@ -20,36 +23,40 @@ Tabela carregarCSV(string caminho) {
         return tabela;
     }
 
-    // pula o cabeçalho. Não salva como tupla
+    // Pula o cabeçalho e lê os nomes das colunas para o esquema
     getline(arquivo, linha);
+    removerCR(linha);
 
     int indice = 0;
     string coluna;
     stringstream header(linha);
 
-    // lê as colunas do cabeçalho. No caso o nome dos campos da nossa tabela.
     while(getline(header, coluna, '\t')) {
+        removerCR(coluna);
         tabela.esquema.nome_para_indice[coluna] = indice;
         indice++;
     }
 
-    // salva a quantidade de colunas dessa tabela.
     tabela.esquema.qtd_cols = indice;
     Pagina paginaAtual;
 
     while(getline(arquivo, linha)) {
-        // se linha vazia pula para a próxima iteração
         if(linha.empty()) continue;
+
+        // remove \r do final da linha (CRLF do Windows)
+        removerCR(linha);
+
         stringstream ss(linha);
         string valor;
         Tupla t;
 
-        // lê as colunas da linha
         while(getline(ss, valor, '\t')) {
+            // remove \r de cada campo individualmente
+            removerCR(valor);
             t.colunas.push_back(valor);
         }
 
-        // só insere se a página não estiver cheia. Se ela estiver cria uma nova página.
+        // só insere se a página não estiver cheia
         if(!paginaAtual.inserirTupla(t)) {
             tabela.paginas.push_back(paginaAtual);
             paginaAtual = Pagina();
@@ -57,13 +64,12 @@ Tabela carregarCSV(string caminho) {
         }
     }
 
-    // se sobrou página parcialmente cheia. A condição vai salvar o que falta
+    // salva página parcial restante
     if(paginaAtual.qtd_tuplas_ocup > 0) {
         tabela.paginas.push_back(paginaAtual);
     }
 
     tabela.qtd_paginas = tabela.paginas.size();
-
     arquivo.close();
     return tabela;
-}
+} 

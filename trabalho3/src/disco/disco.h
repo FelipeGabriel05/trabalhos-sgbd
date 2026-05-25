@@ -1,6 +1,6 @@
 #ifndef DISCO_H
 #define DISCO_H
-#include "dados.h"
+#include "../structs/dados.h"
 
 class DiscoSimulado {
     public:
@@ -13,6 +13,8 @@ class DiscoSimulado {
         void mostrarEstadoDisco();
         void mostrarConteudoDisco(int indice_coluna);
         void mostrarRuns(int indice_coluna);
+        void exportarCSV(string caminho, int indice_coluna);
+        void salvarRunsTXT(string caminho, int indice_coluna);  
 };  
 
 #endif

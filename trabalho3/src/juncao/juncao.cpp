@@ -1,5 +1,6 @@
 #include "juncao.h"
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -206,4 +207,31 @@ Tabela MergeJoin::executar(
     cout << "Paginas resultado: " << resultado.qtd_paginas << endl;
 
     return resultado;
+}
+
+void MergeJoin::salvarResultadoCSV(Tabela &tabela, string caminho) {
+
+    ofstream arquivo(caminho);
+
+    if(!arquivo.is_open()) {
+
+        cout << "Erro ao criar arquivo resultado\n";
+        return;
+    }
+
+    for(Pagina p : tabela.paginas) {
+        for(Tupla t : p.tuplas) {
+            for(size_t i = 0; i < t.colunas.size(); i++) {
+                arquivo << t.colunas[i];
+                if(i < t.colunas.size() - 1) {
+                    arquivo << "\t";
+                }
+            }
+            arquivo << "\n";
+        }
+    }
+
+    arquivo.close();
+
+    cout << "Resultado salvo em " << caminho << endl;
 }

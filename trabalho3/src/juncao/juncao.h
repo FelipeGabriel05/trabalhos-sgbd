@@ -13,6 +13,8 @@ class MergeJoin {
             int indice1,
             int indice2
         );
+
+        void salvarResultadoCSV(Tabela &tabela, string caminho);
 };
 
 #endif

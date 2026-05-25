@@ -1,0 +1,626 @@
+========== RUNS ==========
+Total de runs: 9
+
+RUN 1
+Paginas: 0 ate 4
+
+PAGINA 0
+Bacchus
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carménère
+Castelão
+Chardonnay
+
+PAGINA 1
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 2
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 3
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Cortese
+Cortese
+Cortese
+Marsanne
+
+PAGINA 4
+Merlot
+Merlot
+Merlot
+Pinotage
+Sangiovese
+Sangiovese
+Verdejo
+Vespaiola
+Viognier
+Viognier
+Viognier
+Viognier
+
+RUN 2
+Paginas: 5 ate 9
+
+PAGINA 5
+Agiorgitiko
+Aligoté
+Bacchus
+Cabernet Franc
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+
+PAGINA 6
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carignan
+Carménère
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 7
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 8
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Cortese
+Godello
+Merlot
+Merlot
+Merlot
+
+PAGINA 9
+Merlot
+Merlot
+Merlot
+Merlot
+Pais
+Sangiovese
+Siegerrebe
+Viognier
+Viognier
+Viognier
+Viognier
+Xinomavro
+
+RUN 3
+Paginas: 10 ate 14
+
+PAGINA 10
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+
+PAGINA 11
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carignan
+Carménère
+Carménère
+Castelão
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 12
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 13
+Chardonnay
+Fiano
+Mauzac
+Merlot
+Merlot
+Merlot
+Merlot
+Merlot
+Merlot
+Merlot
+Nebbiolo
+Nebbiolo
+
+PAGINA 14
+Negroamaro
+Pinotage
+Rondinella
+Sangiovese
+Sangiovese
+Sangiovese
+Sangiovese
+Tinta Barroca
+Verdejo
+Verdicchio
+Viognier
+Xinomavro
+
+RUN 4
+Paginas: 15 ate 19
+
+PAGINA 15
+Barbera
+Cabernet Franc
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+
+PAGINA 16
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carignan
+Carménère
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 17
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 18
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Colombard
+Merlot
+Merlot
+Merlot
+Merlot
+Merlot
+
+PAGINA 19
+Merlot
+Merlot
+Merlot
+Montepulciano
+Nebbiolo
+Pinotage
+Sangiovese
+Sangiovese
+Sangiovese
+Sémillon
+Viognier
+Viognier
+
+RUN 5
+Paginas: 20 ate 24
+
+PAGINA 20
+Bacchus
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carménère
+
+PAGINA 21
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 22
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 23
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Fiano
+Marsanne
+Merlot
+Merlot
+Merlot
+Merlot
+Montepulciano
+Nebbiolo
+
+PAGINA 24
+Nebbiolo
+Nebbiolo
+Nebbiolo
+Nebbiolo
+Pais
+Rkatsiteli
+Sangiovese
+Sangiovese
+Sangiovese
+Sémillon
+Sémillon
+Verdicchio
+
+RUN 6
+Paginas: 25 ate 29
+
+PAGINA 25
+Bacchus
+Cabernet Franc
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Castelão
+
+PAGINA 26
+Castelão
+Castelão
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 27
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 28
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 29
+Chardonnay
+Merlot
+Merlot
+Merlot
+Merlot
+Pinotage
+Sangiovese
+Saperavi
+Sémillon
+Viognier
+Viognier
+Viognier
+
+RUN 7
+Paginas: 30 ate 34
+
+PAGINA 30
+Barbera
+Barbera
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+
+PAGINA 31
+Cabernet Sauvignon
+Cabernet Sauvignon
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 32
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 33
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Dolcetto
+Merlot
+Merlot
+Merlot
+Merlot
+Merlot
+
+PAGINA 34
+Merlot
+Merlot
+Merlot
+Merlot
+Nebbiolo
+Sangiovese
+Sémillon
+Sémillon
+Tinta Barroca
+Viognier
+Viognier
+Viognier
+
+RUN 8
+Paginas: 35 ate 39
+
+PAGINA 35
+Cabernet Franc
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Carignan
+Carignan
+
+PAGINA 36
+Castelão
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 37
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 38
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Marsanne
+Merlot
+Nebbiolo
+Nebbiolo
+
+PAGINA 39
+Pinotage
+Pinotage
+Pinotage
+Roussanne
+Sangiovese
+Sangiovese
+Sangiovese
+Sangiovese
+Sémillon
+Tibouren
+Viognier
+Viognier
+
+RUN 9
+Paginas: 40 ate 42
+
+PAGINA 40
+
+Aglianico
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Cabernet Sauvignon
+Chardonnay
+Chardonnay
+Chardonnay
+
+PAGINA 41
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Chardonnay
+Colombard
+Falanghina
+Marsanne
+Marsanne
+
+PAGINA 42
+Merlot
+Sangiovese
+Sangiovese
+Sémillon
+Tinta Barroca
+Viognier
+Viognier

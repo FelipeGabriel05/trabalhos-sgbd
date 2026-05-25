@@ -1,0 +1,52 @@
+========== RUNS ==========
+Total de runs: 1
+
+RUN 1
+Paginas: 0 ate 3
+
+PAGINA 0
+Agiorgitiko
+Aglianico
+Aligoté
+Bacchus
+Barbera
+Cabernet Franc
+Cabernet Sauvignon
+Carignan
+Carménère
+Castelão
+Chardonnay
+Colombard
+
+PAGINA 1
+Cortese
+Dolcetto
+Falanghina
+Fiano
+Godello
+Marsanne
+Mauzac
+Merlot
+Montepulciano
+Nebbiolo
+Negroamaro
+Pais
+
+PAGINA 2
+Pinotage
+Rkatsiteli
+Rondinella
+Roussanne
+Sangiovese
+Saperavi
+Siegerrebe
+Sémillon
+Tibouren
+Tinta Barroca
+Verdejo
+Verdicchio
+
+PAGINA 3
+Vespaiola
+Viognier
+Xinomavro

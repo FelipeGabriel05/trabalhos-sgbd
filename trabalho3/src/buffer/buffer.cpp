@@ -175,7 +175,7 @@ void Buffer::mergeRuns(DiscoSimulado &disco, int indice_coluna) {
 
                     // Se essa tupla é menor do que a menor encontrada até agora
                     // ela passa a ser a nova candidata
-                    if(menorRun == -1 || atual.colunas[indice_coluna] <= menorTupla.colunas[indice_coluna]) {
+                    if(menorRun == -1 || atual.colunas[indice_coluna] < menorTupla.colunas[indice_coluna]) {
                         menorRun   = r;
                         menorTupla = atual;
                     }
