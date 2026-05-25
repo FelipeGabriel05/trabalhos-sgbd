@@ -10,7 +10,8 @@ CXXFLAGS = -Wall -std=c++11 \
            -Ileitura \
            -Istructs \
            -Isort \
-           -Idisco
+           -Idisco \
+           -Ijuncao
 
 # Arquivos fonte
 SRCS = main.cpp \
@@ -18,7 +19,8 @@ SRCS = main.cpp \
        $(wildcard leitura/*.cpp) \
        $(wildcard structs/*.cpp) \
        $(wildcard sort/*.cpp) \
-       $(wildcard disco/*.cpp)
+       $(wildcard disco/*.cpp) \
+       $(wildcard juncao/*.cpp)
 
 # Objetos
 OBJS = $(SRCS:.cpp=.o)

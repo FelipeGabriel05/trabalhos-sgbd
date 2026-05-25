@@ -14,33 +14,39 @@ Tabela MergeJoin::executar(
 
     Tabela resultado;
 
-    // ponteiros tabela 1
+    // Marcadores de leitura da tabela1:
+    // pag1 mostra qual página estamos lendo agora
+    // tup1 mostra qual tupla dentro dessa página
     int pag1 = 0;
     int tup1 = 0;
 
-    // ponteiros tabela 2
+    // Marcadores de leitura da tabela2 (mesma lógica)
     int pag2 = 0;
     int tup2 = 0;
 
-    // página atual do resultado
+    // Frame de saída: acumula as tuplas resultado até
+    // encher (12 tuplas), depois é salvo e limpo
     Pagina paginaResultado;
 
-    // enquanto existir páginas nas duas tabelas
-    while(pag1 < tabela1.paginas.size() && pag2 < tabela2.paginas.size()) {
+    // Percorre as duas tabelas ao mesmo tempo enquanto
+    // nenhuma delas acabar
+    while(pag1 < (int)tabela1.paginas.size() && pag2 < (int)tabela2.paginas.size()) {
 
         Pagina &p1 = tabela1.paginas[pag1];
         Pagina &p2 = tabela2.paginas[pag2];
 
-        // segurança
-        if(tup1 >= p1.tuplas.size()) {
-
+        // Se esgotou as tuplas reais da página atual da tabela1
+        // passa para a próxima página.
+        // Usamos qtd_tuplas_ocup em vez de tuplas.size() para
+        // não ler posições vazias do array fixo de 12
+        if(tup1 >= p1.qtd_tuplas_ocup) {
             pag1++;
             tup1 = 0;
             continue;
         }
 
-        if(tup2 >= p2.tuplas.size()) {
-
+        // Mesma verificação para tabela2
+        if(tup2 >= p2.qtd_tuplas_ocup) {
             pag2++;
             tup2 = 0;
             continue;
@@ -49,98 +55,154 @@ Tabela MergeJoin::executar(
         Tupla &t1 = p1.tuplas[tup1];
         Tupla &t2 = p2.tuplas[tup2];
 
-        string chave1 =
-            t1.colunas[indice1];
+        // Pega os valores da coluna de junção das duas tuplas
+        string chave1 = t1.colunas[indice1]; // ex: "Chardonnay" (Grapes)
+        string chave2 = t2.colunas[indice2]; // ex: "Chardonnay" (Wines)
 
-        string chave2 =
-            t2.colunas[indice2];
 
-        // CHAVES IGUAIS => FAZ JOIN
+        // Caso 1: chaves iguais => encontramos um grupo de JOIN
         if(chave1 == chave2) {
 
-            cout
-                << "MATCH: "
-                << chave1
-                << endl;
+            cout << "grupo de join: " << chave1 << endl;
 
-            Tupla novaTupla;
+            // Grupos que vão acumular todas as tuplas
+            // com essa mesma chave em cada tabela.
+            // Necessário para gerar o produto cartesiano
+            // quando há duplicatas 
+            // evita não analisar todos os casos.
+            vector<Tupla> grupo1;
+            vector<Tupla> grupo2;
 
-            // adiciona colunas tabela1
-            for(string c : t1.colunas) {
+            string chaveAtual = chave1;
 
-                novaTupla.colunas.push_back(c);
+            // Coleta todas as tuplas com essa chave na tabela1
+            while(pag1 < (int)tabela1.paginas.size()) {
+
+                Pagina &paginaAtual = tabela1.paginas[pag1];
+
+                // Página esgotada => avança para a próxima
+                if(tup1 >= paginaAtual.qtd_tuplas_ocup) {
+                    pag1++;
+                    tup1 = 0;
+                    continue;
+                }
+
+                Tupla atual = paginaAtual.tuplas[tup1];
+
+                // Encontrou uma tupla com chave diferente
+                // o grupo desta chave acabou, para a coleta
+                if(atual.colunas[indice1] != chaveAtual) {
+                    break;
+                }
+
+                grupo1.push_back(atual);
+                tup1++;
+
+                // Se acabou a página após avançar, passa para a próxima
+                if(tup1 >= paginaAtual.qtd_tuplas_ocup) {
+                    pag1++;
+                    tup1 = 0;
+                }
             }
 
-            // adiciona colunas tabela2
-            for(string c : t2.colunas) {
+            // Coleta todas as tuplas com essa chave na tabela2
+            // (mesma lógica da coleta acima)
+            while(pag2 < (int)tabela2.paginas.size()) {
 
-                novaTupla.colunas.push_back(c);
+                Pagina &paginaAtual = tabela2.paginas[pag2];
+
+                // Página esgotada => avança para a próxima
+                if(tup2 >= paginaAtual.qtd_tuplas_ocup) {
+                    pag2++;
+                    tup2 = 0;
+                    continue;
+                }
+
+                Tupla atual = paginaAtual.tuplas[tup2];
+
+                // Chave diferente → grupo encerrado
+                if(atual.colunas[indice2] != chaveAtual) {
+                    break;
+                }
+
+                grupo2.push_back(atual);
+                tup2++;
+
+                // Fim de página → avança
+                if(tup2 >= paginaAtual.qtd_tuplas_ocup) {
+                    pag2++;
+                    tup2 = 0;
+                }
             }
 
-            // tenta inserir
-            if(!paginaResultado.inserirTupla(novaTupla)) {
+            // Produto cartesiano: combina cada tupla do grupo1
+            // com cada tupla do grupo2.
+            //     Ex: grupo1 = [Chardonnay_grape]
+            //     grupo2 = [Vinho_A, Vinho_B, Vinho_C]
+            //     resultado = 3 tuplas combinadas
+            for(Tupla a : grupo1) {
+                for(Tupla b : grupo2) {
 
-                // página cheia
-                resultado.paginas.push_back(
-                    paginaResultado
-                );
+                    // Monta a tupla resultado juntando todas as
+                    // colunas da tabela1 seguidas das da tabela2
+                    Tupla novaTupla;
 
-                paginaResultado = Pagina();
+                    for(string c : a.colunas)
+                        novaTupla.colunas.push_back(c);
 
-                paginaResultado.inserirTupla(
-                    novaTupla
-                );
-            }
+                    for(string c : b.colunas)
+                        novaTupla.colunas.push_back(c);
 
-            // avança tabela1
-            tup1++;
+                    // Tenta inserir no frame de saída.
+                    // Se o frame estiver cheio (12 tuplas),
+                    // salva a página no resultado e limpa o frame
+                    if(!paginaResultado.inserirTupla(novaTupla)) {
 
-            // acabou página?
-            if(tup1 >= p1.tuplas.size()) {
-                pag1++;
-                tup1 = 0;
+                        resultado.paginas.push_back(paginaResultado);
+                        paginaResultado = Pagina();
+                        paginaResultado.inserirTupla(novaTupla);
+                    }
+                }
             }
         }
 
-        // CHAVE1 MENOR
+        // Caso 2: chave1 < chave2
+        // A tabela1 está "atrás" — avança ela para alcançar
+        // a tabela2
         else if(chave1 < chave2) {
 
             tup1++;
 
-            if(
-                tup1 >= p1.tuplas.size()
-            ) {
-
+            if(tup1 >= p1.qtd_tuplas_ocup) {
                 pag1++;
                 tup1 = 0;
             }
         }
 
-        // CHAVE2 MENOR
+        // Caso 3: chave2 < chave1
+        // A tabela2 está "atrás" — avança ela para alcançar
+        // a tabela1
         else {
 
             tup2++;
 
-            if(tup2 >= p2.tuplas.size()) {
-
+            if(tup2 >= p2.qtd_tuplas_ocup) {
                 pag2++;
                 tup2 = 0;
             }
         }
     }
 
-    // salva última página
-    if(paginaResultado.tuplas.size() > 0) {
-
-        resultado.paginas.push_back(
-            paginaResultado
-        );
+    // Ao terminar o percurso, o frame de saída pode ter
+    // tuplas que ainda não foram salvas (última página
+    // parcial). Salva o que sobrou
+    if(paginaResultado.qtd_tuplas_ocup > 0) {
+        resultado.paginas.push_back(paginaResultado);
     }
 
     resultado.qtd_paginas = resultado.paginas.size();
 
-    cout << "\n Join Finalizado \n";
-
+    cout << "\nJOIN FINALIZADO\n";
     cout << "Paginas resultado: " << resultado.qtd_paginas << endl;
 
     return resultado;
